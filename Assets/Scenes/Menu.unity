@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Hard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -289,7 +289,7 @@ RectTransform:
   m_Children:
   - {fileID: 1760136786}
   m_Father: {fileID: 1325004776}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -339,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223537287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1790580552}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: EasyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223537287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Medium
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -856,7 +868,7 @@ RectTransform:
   m_Children:
   - {fileID: 479888037}
   m_Father: {fileID: 1325004776}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -906,7 +918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1156580755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1790580552}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: MediumButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1156580755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,8 +1138,8 @@ RectTransform:
   - {fileID: 1206122989}
   - {fileID: 1650924059}
   - {fileID: 482732240}
-  - {fileID: 1156580753}
   - {fileID: 223537285}
+  - {fileID: 1156580753}
   - {fileID: 1675619200}
   - {fileID: 1819389448}
   m_Father: {fileID: 0}
@@ -1251,15 +1275,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Instructions:
 
-    Drag the skulls to possible matches to make a line
-    of 3 or more
+    Rotate the individual pipes to set up a path for the
+    liquid to flow
 
     Reach the goal before the time runs out
 
     The harder the
-    difficulty the bigger the goal is
-
-    also shorter time frame to achieve it'
+    difficulty the bigger the pipes path to align'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1418,7 +1440,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1675619202}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1790580552}
+        m_TargetAssemblyTypeName: ButtonBehaviour, Assembly-CSharp
+        m_MethodName: HardButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1675619202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,7 +1548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Easy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
