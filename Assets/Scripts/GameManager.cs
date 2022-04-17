@@ -8,30 +8,22 @@ public class GameManager : MonoBehaviour
     public GameObject[] pipes;
 
     [SerializeField]
+    public float timer = 90;
+    [SerializeField]
     public int totalPipes = 0;
     [SerializeField]
     int flowingPipes = 0;
 
-    public bool win = false;
-    public bool lose = false;
+    public GameObject win;
+    public GameObject lose;
 
-    private static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
+    [SerializeField]
+    private TMPro.TextMeshProUGUI timeText;
 
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
-    // Start is called before the first frame update
     void Start()
     {
+        timeText.text = "Time: " + timer.ToString();
+
         totalPipes = PipesHolder.transform.childCount;
         pipes = new GameObject[totalPipes];
 
@@ -40,19 +32,40 @@ public class GameManager : MonoBehaviour
             pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
         }
     }
-
+    void Update()
+    {
+        if (timer < 0)
+        {
+            Lost();
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+            timeText.text = "Time: " + (int)timer;
+        }
+    }
     public void correctMove()
     {
         flowingPipes += 1;
 
         if (flowingPipes == totalPipes)
         {
-            Debug.Log("You win!");
+            Won();
         }
     }
 
     public void wrongMove()
     {
         flowingPipes -= 1;
+    }
+    public void Won()
+    {
+        Debug.Log("You win!");
+        win.SetActive(true);
+    }
+    public void Lost()
+    {
+        Debug.Log("You lost!");
+        lose.SetActive(true);
     }
 }

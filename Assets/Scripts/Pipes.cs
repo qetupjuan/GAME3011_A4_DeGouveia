@@ -12,7 +12,6 @@ public class Pipes : MonoBehaviour
     int PossibleRots = 1;
 
     GameManager gm;
-    private Vector3 startingPosition;
 
     private void Awake()
     {
@@ -21,8 +20,6 @@ public class Pipes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startingPosition = transform.position;
-
         PossibleRots = correctRotation.Length;
         int randomStart = Random.Range(0, rotations.Length);
         transform.eulerAngles = new Vector3(0, 0, rotations[randomStart]);
@@ -31,16 +28,38 @@ public class Pipes : MonoBehaviour
         {
             if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
             {
-                itFlows = true;
-                gm.correctMove();
+                if (itFlows == false)
+                {
+                    itFlows = true;
+                    gm.correctMove();
+                }
+            }
+            else
+            {
+                if (itFlows == true)
+                {
+                    itFlows = false;
+                    gm.wrongMove();
+                }
             }
         }
         else
         {
             if (transform.eulerAngles.z == correctRotation[0])
             {
-                itFlows = true;
-                gm.correctMove();
+                if (itFlows == false)
+                {
+                    itFlows = true;
+                    gm.correctMove();
+                }
+            }
+            else
+            {
+                if (itFlows == true)
+                {
+                    itFlows = false;
+                    gm.wrongMove();
+                }
             }
         }
     }
@@ -56,28 +75,41 @@ public class Pipes : MonoBehaviour
 
         if (PossibleRots > 1)
         {
-            if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && itFlows == false)
+            if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
             {
-                itFlows = true;
-                gm.correctMove();
+                if (itFlows == false)
+                {
+                    itFlows = true;
+                    gm.correctMove();
+                }
             }
-            else if (itFlows == true)
+            else
             {
-                itFlows = false;
-                gm.wrongMove();
+                if (itFlows == true)
+                {
+                    itFlows = false;
+                    gm.wrongMove();
+                }
             }
         }
         else
         {
-            if (transform.eulerAngles.z == correctRotation[0] && itFlows == false)
+            if (transform.eulerAngles.z == correctRotation[0])
             {
-                itFlows = true;
-                gm.correctMove();
+                if(itFlows == false)
+                {
+                    itFlows = true;
+                    gm.correctMove();
+                }
             }
-            else if (itFlows == true)
+            else
             {
-                itFlows = false;
-                gm.wrongMove();
+
+                if (itFlows == true)
+                {
+                    itFlows = false;
+                    gm.wrongMove();
+                }
             }
         }
     }
