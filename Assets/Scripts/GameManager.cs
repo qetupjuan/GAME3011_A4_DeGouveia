@@ -5,25 +5,54 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject PipesHolder;
-    public GameObject[] Pipes;
+    public GameObject[] pipes;
 
     [SerializeField]
-    int totalPipes = 0;
+    public int totalPipes = 0;
+    [SerializeField]
+    int flowingPipes = 0;
+
+    public bool win = false;
+    public bool lose = false;
+
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         totalPipes = PipesHolder.transform.childCount;
-        Pipes = new GameObject[totalPipes];
+        pipes = new GameObject[totalPipes];
 
-        for (int i = 0; i < Pipes.Length; i++)
+        for (int i = 0; i < pipes.Length; i++)
         {
-            Pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
+            pipes[i] = PipesHolder.transform.GetChild(i).gameObject;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void correctMove()
     {
-        
+        flowingPipes += 1;
+
+        if (flowingPipes == totalPipes)
+        {
+            Debug.Log("You win!");
+        }
+    }
+
+    public void wrongMove()
+    {
+        flowingPipes -= 1;
     }
 }

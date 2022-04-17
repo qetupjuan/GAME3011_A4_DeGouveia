@@ -6,17 +6,42 @@ public class Pipes : MonoBehaviour
 {
     float[] rotations = { 0, 90, 180, 270 };
 
-    public float correctRotation;
-    public bool isPlaced = false;
+    public float[] correctRotation;
+    public bool itFlows = false;
+
+    int PossibleRots = 1;
+
+    GameManager gm;
+    private Vector3 startingPosition;
+
+    private void Awake()
+    {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        int rand = Random.Range(0, rotations.Length);
-        transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
+        startingPosition = transform.position;
 
-        if (transform.eulerAngles.z == correctRotation)
+        PossibleRots = correctRotation.Length;
+        int randomStart = Random.Range(0, rotations.Length);
+        transform.eulerAngles = new Vector3(0, 0, rotations[randomStart]);
+
+        if (PossibleRots > 1)
         {
-            isPlaced = true;
+            if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
+            {
+                itFlows = true;
+                gm.correctMove();
+            }
+        }
+        else
+        {
+            if (transform.eulerAngles.z == correctRotation[0])
+            {
+                itFlows = true;
+                gm.correctMove();
+            }
         }
     }
 
@@ -27,15 +52,33 @@ public class Pipes : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        transform.Rotate(new Vector3(0, 0, 90));
+        transform.Rotate(new Vector3(0, 0, 90.0f));
 
-        if (transform.eulerAngles.z == correctRotation && isPlaced == false)
+        if (PossibleRots > 1)
         {
-            isPlaced = true;
+            if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1] && itFlows == false)
+            {
+                itFlows = true;
+                gm.correctMove();
+            }
+            else if (itFlows == true)
+            {
+                itFlows = false;
+                gm.wrongMove();
+            }
         }
-        else if (isPlaced == true)
+        else
         {
-            isPlaced = false;
+            if (transform.eulerAngles.z == correctRotation[0] && itFlows == false)
+            {
+                itFlows = true;
+                gm.correctMove();
+            }
+            else if (itFlows == true)
+            {
+                itFlows = false;
+                gm.wrongMove();
+            }
         }
     }
 }
