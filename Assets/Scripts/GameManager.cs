@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject win;
     public GameObject lose;
+    public bool won = false;
+    public bool lost = false;
 
     [SerializeField]
     private TMPro.TextMeshProUGUI timeText;
@@ -61,11 +63,13 @@ public class GameManager : MonoBehaviour
     public void Won()
     {
         Debug.Log("You win!");
+        won = true;
         win.SetActive(true);
     }
     public void Lost()
     {
         Debug.Log("You lost!");
+        lost = true;
         lose.SetActive(true);
     }
 }
